@@ -24,6 +24,9 @@ function getYesterday() {
 function getTomorrow() {
   const today = new Date();  
   const tomorrow = new Date(new Date().setDate(today.getDate() + 3));
+  tomorrow.setHours(23);
+  tomorrow.setMinutes(59);
+  tomorrow.setSeconds(59);
   return tomorrow.toISOString();
 }
 
@@ -88,12 +91,8 @@ function getRangeString() {
 }
 
 
-function isoToDateValue (dateISOStr) {
-  /**
-   * Return a Date object from a ISO string
-   */
-  let str = dateISOStr.replace(/-/,'/').replace(/-/,'/').replace(/T/,' ').replace(/\+/,' \+').replace(/Z/,' +00');
-  return new Date(str).valueOf();
+function isoToDateValue(dateISOStr) {
+  return new Date(dateISOStr).valueOf();
 }
 
 
